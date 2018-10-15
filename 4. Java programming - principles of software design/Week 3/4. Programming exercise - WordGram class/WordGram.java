@@ -60,10 +60,19 @@ public class WordGram {
     }
 
     public WordGram shiftAdd(String word) { 
-        ArrayList<String> temp = new ArrayList<String>(Arrays.asList(myWords));
+        /*ArrayList<String> temp = new ArrayList<String>(Arrays.asList(myWords));
         temp.remove(0);
         temp.add(word);
-        WordGram out = new WordGram(temp.toArray(new String[temp.size()]), 0, temp.size());
+        WordGram out = new WordGram(temp.toArray(new String[temp.size()]), 0, temp.size());*/
+        WordGram out = new WordGram(myWords, 0, myWords.length);
+        // shift all words one towards 0 and add word at the end. 
+        ArrayList<String> temp= new ArrayList<String>(out.length());
+        
+        for (int k=1;k<out.length();k++){
+             temp.add(out.wordAt(k));         
+              }
+        temp.add(word);
+        out=new WordGram(temp.toArray(new String[temp.size()]), 0, temp.size());
         return out;
     }
     
